@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<!-- Hamburger logo -->
+<link rel="shortcut icon" href="../../assets/hamburger_icon.ico" />
+
+<div th:replace="/fragments/styling :: head-style"></div>
+
+<title>Edit your blog</title>
+</head>
+<body>
+
+	<div th:replace="fragments/navbar :: navbar"></div>
+
+	<form action="#"
+		th:action="@{~/blogposts/update/{id}(id=${blogPost.id})}"
+		th:object="${blogPost}" method="POST">
+		<label for="blogTitle">Title:</label> <input type="text"
+			name="blogTitle" th:field="*{title}" /> <label for="blogAuthor">Author:</label>
+		<input type="text" name="blogAuthor" th:field="*{author}" /> <label
+			for="blogEntry">Blog Entry:</label> <input type="text"
+			name="blogEntry" th:field="*{blogEntry}" />
+
+		<button type="submit" class="btn btn-success">Submit Your
+			Blog</button>
+	</form>
+
+		<div th:replace="fragments/scriptlinks"></div>
+</body>
+</html>
